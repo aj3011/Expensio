@@ -1,5 +1,16 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
+import {
+  TextField,
+  Typography,
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
+} from "@material-ui/core";
+
+import { currencies } from "../../constants/Currencies";
 
 //importing the provider for AuthContext
 import { useAuth } from "../../context/AuthContext";
@@ -56,6 +67,14 @@ export default function Signup() {
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
             {/* disabled here means that when we are making request we set the loading to trye so that the user does not create multiple requests by clicking on the button again and again. */}
+            <InputLabel>Select Your Currency</InputLabel>
+            <Select>
+              {currencies.map(c => (
+                <MenuItem key={c.symbol} value={c.symbol}>
+                  {`${c.symbol} : ${c.name}`}
+                </MenuItem>
+              ))}
+            </Select>
             <Button disabled={loading} className="w-100" type="submit">
               Sign Up
             </Button>

@@ -120,6 +120,10 @@ function Form() {
           <Grid item xs={6}>
       <TextField type="date" label="Date" fullWidth value={formData.date} onChange={(e)=>setFormData({...formData,date:(e.target.value)})} />
           </Grid>
+          <InputLabel>Category</InputLabel>
+       <Select value={formData.category} onChange={(e)=>setFormData({...formData,category:e.target.value})}>
+         {selectedCategories.map((c)=><MenuItem key={c.type} value={c.type}>{c.type}</MenuItem>)}
+       </Select>
           <Button className={classes.button} variant='outlined' color='primary' fullWidth onClick={createTransaction}>Create</Button>
 
     </Grid>
