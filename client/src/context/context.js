@@ -187,13 +187,16 @@ import React, { useReducer, createContext } from "react";
 import axios from "axios";
 
 import contextReducer from "./contextReducer";
+import currReducer from "./currReducer";
 //
 const initialState = [] || JSON.parse(localStorage.getItem("transactions"));
+const init = [];
 export const ExpenseTrackerContext = createContext(initialState);
 
 export const Provider = ({ children }) => {
   // reducer is function that specifies how we'll be changing our state
   const [transactions, dispatch] = useReducer(contextReducer, initialState);
+  const [Currency, Dispatch] = useReducer(currReducer, init);
 
   // Action creators
 
@@ -242,6 +245,10 @@ export const Provider = ({ children }) => {
     }
   }
 
+  async function setCurr(value) {
+    Dispatch({ type: "SET_CURRENCY", payload: value });
+  }
+
   let balance = transactions.reduce((acc, currVal) => {
     return currVal.type === "Expense"
       ? acc - currVal.amount
@@ -251,6 +258,8 @@ export const Provider = ({ children }) => {
   return (
     <ExpenseTrackerContext.Provider
       value={{
+        setCurr,
+        Currency,
         getTransactions,
         deleteTransaction,
         addTransaction,

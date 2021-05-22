@@ -12,13 +12,15 @@ const initialState={
   userID:'',
   amount:'',
   category:'',
-  type:'Income'
+  type:'Income',
+  description:'N/A'
 };
 
 function Form() {
   const classes = useStyles();
 
-  const{addTransaction} = useContext(ExpenseTrackerContext);
+  const{addTransaction,Currency} = useContext(ExpenseTrackerContext);
+
   const [formData, setFormData]= useState(initialState);
 
   //this segment is used to extract the speech
@@ -82,6 +84,7 @@ function Form() {
 
   const {currentUser} = useAuth();
   return (
+
     // The responsive grid focuses on consistent spacing widths, rather than column width. Material Design margins and columns follow an 8px square baseline grid. The spacing property is an integer between 0 and 10 inclusive. By default, the spacing between two grid items follows a linear function: output(spacing) = spacing * 8px, e.g. spacing={2} creates a 16px wide gap.
     <Grid container spacing={2}>
     <SnackBar open={open} setOpen={setOpen}/>
@@ -120,10 +123,7 @@ function Form() {
           <Grid item xs={6}>
       <TextField type="date" label="Date" fullWidth value={formData.date} onChange={(e)=>setFormData({...formData,date:(e.target.value)})} />
           </Grid>
-          <InputLabel>Category</InputLabel>
-       <Select value={formData.category} onChange={(e)=>setFormData({...formData,category:e.target.value})}>
-         {selectedCategories.map((c)=><MenuItem key={c.type} value={c.type}>{c.type}</MenuItem>)}
-       </Select>
+          <TextField type="String" label="Additional Notes (Optional) " fullWidth value={formData.description} onChange={(e)=>setFormData({...formData,description:e.target.value})}/>
           <Button className={classes.button} variant='outlined' color='primary' fullWidth onClick={createTransaction}>Create</Button>
 
     </Grid>

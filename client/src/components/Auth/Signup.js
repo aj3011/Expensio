@@ -1,4 +1,7 @@
 import React, { useRef, useState } from "react";
+import { useContext } from "react";
+import { ExpenseTrackerContext } from "../../context/context";
+
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import {
   TextField,
@@ -47,6 +50,7 @@ export default function Signup() {
     setLoading(false);
   }
 
+  const { setCurr } = useContext(ExpenseTrackerContext);
   return (
     <>
       <Card>
@@ -67,14 +71,7 @@ export default function Signup() {
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
             {/* disabled here means that when we are making request we set the loading to trye so that the user does not create multiple requests by clicking on the button again and again. */}
-            <InputLabel>Select Your Currency</InputLabel>
-            <Select>
-              {currencies.map(c => (
-                <MenuItem key={c.symbol} value={c.symbol}>
-                  {`${c.symbol} : ${c.name}`}
-                </MenuItem>
-              ))}
-            </Select>
+
             <Button disabled={loading} className="w-100" type="submit">
               Sign Up
             </Button>

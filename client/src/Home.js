@@ -13,6 +13,7 @@ import {
 import Details from "./components/Details/Details";
 import Main from "./components/Main/Main";
 import useStyles from "./styles";
+import CurrencySelector from "./CurrencySelector";
 
 function Home() {
   const classes = useStyles();
@@ -34,6 +35,7 @@ function Home() {
       <Button variant="contained" color="secondary" onClick={logout}>
         Log Out
       </Button>
+      <CurrencySelector />
       <Grid
         className={classes.grid}
         container

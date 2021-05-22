@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
 
 //whenever we use mongoose to make requests to the database, they return a promise. so we have to use async function here
 const connectDB = async () => {

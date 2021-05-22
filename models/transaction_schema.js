@@ -56,7 +56,8 @@ const TransactionSchema = new mongoose.Schema({
   date: {
     type: String,
     default: formatDate(new Date())
-  }
+  },
+  description: String
 });
 
 module.exports = mongoose.model("Transaction", TransactionSchema);

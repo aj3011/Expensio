@@ -67,7 +67,7 @@ import {CSVLink} from "react-csv";
 
 function List() {
   const classes = useStyles();
-  const { deleteTransaction, transactions, getTransactions } = useContext(
+  const { deleteTransaction, transactions, getTransactions,Currency} = useContext(
     ExpenseTrackerContext
   );
 
@@ -141,10 +141,11 @@ const csvReport={
               </ListItemAvatar>
               <ListItemText
                 primary={transaction.category}
-                secondary={`$${(transaction.amount)} - ${
+                secondary={`${Currency}${(transaction.amount)} : ${transaction.description===''?transaction.description:""} ${
                   transaction.date
                 }`}
               />
+
               <ListItemSecondaryAction>
                 <IconButton
                   edge="end"
