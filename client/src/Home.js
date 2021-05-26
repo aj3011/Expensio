@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Grid, Button } from "@material-ui/core";
 
 //importing the logout button
@@ -14,6 +15,7 @@ import Details from "./components/Details/Details";
 import Main from "./components/Main/Main";
 import useStyles from "./styles";
 import CurrencySelector from "./CurrencySelector";
+import UpdateProfile from "./components/Auth/UpdateProfile";
 
 function Home() {
   const classes = useStyles();
@@ -28,14 +30,20 @@ function Home() {
     }
   }, [speechState]);
 
-  const { logout } = useAuth();
+  const { logout, Up } = useAuth();
 
   return (
     <div>
       <Button variant="contained" color="secondary" onClick={logout}>
         Log Out
       </Button>
-      <CurrencySelector />
+
+      <Link to="/UpdateProfile">
+        <Button variant="contained" color="secondary">
+          Update Profile
+        </Button>
+      </Link>
+
       <Grid
         className={classes.grid}
         container

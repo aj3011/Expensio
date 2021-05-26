@@ -8,15 +8,19 @@ import {ExpenseTrackerContext} from '../../context/context';
 import InfoCard from './InfoCard'
 function Main() {
   const classes = useStyles();
-  const {balance,Currency} = useContext(ExpenseTrackerContext);
+  const {balance,transactions} = useContext(ExpenseTrackerContext);
 
-console.log(Currency);
+  var tracker='' ;
+  {transactions.map(t=>{
+     tracker = t.currency;
+  })}
+
   return (
    <Card className={classes.root}>
      <CardHeader title="Expense Tracker" subheader="Powered by Speechly" />
      <CardContent>
      <Typography align ="center" variant="h5">
-        {Currency}{balance}
+        {tracker}{balance}
      </Typography>
       <Typography variant="subtitle1" style={{ lineHeight:'1.5em', marginTop:'20px'}}>
         <InfoCard/>

@@ -15,14 +15,19 @@ import {ExpenseTrackerContext} from '../../context/context'
 const Details =({title})=> {
   const classes = useStyles();
 
-  const {Currency} = useContext(ExpenseTrackerContext)
+  const {transactions} = useContext(ExpenseTrackerContext)
   const {total,chartData} = useTransactions(title);
   console.log(chartData);
+
+  var tracker="";
+  {transactions.map(t=>{
+     tracker = t.currency;
+  })}
   return (
     <Card className={title === "Income"?classes.income:classes.expense} >
       <CardHeader title = {title}/>
       <CardContent>
-        <Typography variant="h5">{Currency }{total}</Typography>
+        <Typography variant="h5">{tracker}{total}</Typography>
         <Doughnut data={chartData} />
       </CardContent>
     </Card>

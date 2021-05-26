@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import CurrencySelector from "../../CurrencySelector";
 
-export default function UpdateProfile() {
+function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -72,6 +73,7 @@ export default function UpdateProfile() {
                 ref={passwordConfirmRef}
                 placeholder="Leave blank to keep the same"
               />
+              <CurrencySelector />
             </Form.Group>
             <Button disabled={loading} className="w-100" type="submit">
               Update
@@ -85,3 +87,5 @@ export default function UpdateProfile() {
     </>
   );
 }
+
+export default UpdateProfile;

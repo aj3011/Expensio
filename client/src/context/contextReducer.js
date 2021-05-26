@@ -63,7 +63,7 @@ const contextReducer = (state, action) => {
       return transactions;
 
     case "ADD_TRANSACTION":
-      transactions = [action.payload, ...state];
+      transactions = [...state, action.payload];
 
       return transactions;
 

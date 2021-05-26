@@ -91,6 +91,7 @@ function App() {
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
+              <Route path="/UpdateProfile" component={UpdateProfile} />
             </Switch>
           </AuthProvider>
         </Router>

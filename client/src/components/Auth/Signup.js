@@ -18,6 +18,7 @@ import { currencies } from "../../constants/Currencies";
 //importing the provider for AuthContext
 import { useAuth } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import CurrencySelector from "../../CurrencySelector";
 
 export default function Signup() {
   const emailRef = useRef();
@@ -71,7 +72,7 @@ export default function Signup() {
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
             {/* disabled here means that when we are making request we set the loading to trye so that the user does not create multiple requests by clicking on the button again and again. */}
-
+            <CurrencySelector />
             <Button disabled={loading} className="w-100" type="submit">
               Sign Up
             </Button>

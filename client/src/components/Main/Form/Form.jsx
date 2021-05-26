@@ -13,7 +13,8 @@ const initialState={
   amount:'',
   category:'',
   type:'Income',
-  description:'N/A'
+  description:'',
+  currency:'CA$'
 };
 
 function Form() {
@@ -36,7 +37,7 @@ function Form() {
   }
     //uuidv4 is a function that creates new unique id every time
     setOpen(true);
-    addTransaction({...formData,amount:Number(formData.amount),userID:currentUser.uid})
+    addTransaction({...formData,amount:Number(formData.amount),userID:currentUser.uid,currency:Currency})
      setFormData(initialState);
   }
 // segment.isFinal returns a boolean value which becomes true when we stop speaking

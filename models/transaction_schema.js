@@ -57,7 +57,8 @@ const TransactionSchema = new mongoose.Schema({
     type: String,
     default: formatDate(new Date())
   },
-  description: String
+  description: String,
+  currency: String
 });
 
 module.exports = mongoose.model("Transaction", TransactionSchema);
